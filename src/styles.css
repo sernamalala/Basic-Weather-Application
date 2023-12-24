@@ -75,7 +75,7 @@ margin-top: 20px;
     color: rgba(36, 39, 38, 0.9);
 }
 
-a,span{
+a,.humidity, .wind{
     color: rgb(210, 59, 84);
 }
 
