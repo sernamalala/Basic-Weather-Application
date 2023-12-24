@@ -61,11 +61,13 @@ display: flex;
 }
 .weather-value{
     font-size: 5rem;
+    margin-left: 30px;
 }
 .weather-icon{
-font-size: 44px;
+width: 55px;
 margin-top: 20px;
-margin-left: 20px;
+background-color: rgba(255, 192, 203, 0.736);
+border-radius: 10px;
 }
 .weather-unit{
 font-size: 40px;
