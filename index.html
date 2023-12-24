@@ -9,24 +9,25 @@
 <body>
     <div class="main-app">
     <header>
-        <h1>Weather App</h1>
         <form>
             <input type="text" name="" id="input-field" placeholder="Enter a city" required>
-            <input type="button" value="Search">
+            <input type="button" value="Search" class="search-button">
         </form>  
     </header>
 
     <main>
-<div>
+<div class="main-weather">
     <h1>Cape Town</h1>
 <p>
     Sunday 06:12, scattered clouds
     <br>
-    Humidity: 66%, Wind: 3.13km/h
+    Humidity: <span>66%</span>, Wind: <span>3.13km/h</span>
 </p>
 </div>
-<div>
-    ☀️ 12°
+<div class="weather">
+<div class="weather-icon">☀️</div>
+     <div class="weather-value">12</div>
+     <div class="weather-unit">°C</div>
 </div>
     </main>
 
