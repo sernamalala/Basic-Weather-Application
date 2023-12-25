@@ -87,3 +87,27 @@ footer{
 padding-top: 20px;
 color: rgba(36, 39, 38, 0.9);
 }
+.col-2 img{
+    width: 35px;
+    background-color: rgba(255, 192, 203, 0.736);
+border-radius: 10px;
+}
+.forecast{
+    display: flex;
+    margin-top: 20px;
+    text-align: center;
+}
+.weather-forecast-date{
+
+    font-size: 20px;
+    opacity: 0.8;
+    color: black;
+}
+.weather-forecast-temperature{
+
+    font-size: 16px;
+}
+.weather-forecast-temperature-min{
+    opacity: 0.8;
+    
+}
