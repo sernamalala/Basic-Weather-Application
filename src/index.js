@@ -78,29 +78,33 @@ function getForecast(city){
     axios.get(apiUrl).then(displayForecast);
     console.log(apiUrl);
 }
+
+
 function displayForecast(response){
 
     console.log(response);
     let forecast = document.querySelector("#forecast");
 
-    let futureDays = ["Tues","Wed","Thurs","Fri","Sat"];
+    // let futureDays = ["Tues","Wed","Thurs","Fri","Sat"];
     let forecastHTML = "";
-    for(let i = 0; i<futureDays.length; i++){
+    for(let i = 1; i<6; i++){
+      let day =  response.data.daily[i];
+      let time = day.time;
         forecastHTML = 
         forecastHTML +
 `
 <div class="row">
 <div class="col-2">
-    <div class="weather-forecast-date">${futureDays[i]}</div>
+    <div class="weather-forecast-date">${formatDay(time)}</div>
             <img 
-    src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png" 
+    src="${day.condition.icon_url}" 
     alt=""/>
     <div class="weather-forecast-temperature">
         <span class="weather-forecast-temperature-max">
-            18°
+        ${Math.round(day.temperature.maximum)}°
         </span>
         <span class="weather-forecast-temperature-min">
-            12°
+            ${Math.round(day.temperature.minimum)}°
         </span>
     </div>
 </div>
@@ -112,5 +116,14 @@ function displayForecast(response){
 
 }
 
+function formatDay(time){
+
+    let date = new Date(time*1000);
+    let days = ["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"];
+    let day = days[date.getDay()];
+
+
+    return day;
+}
 searchCity("Cape Town");
 displayForecast();
