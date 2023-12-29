@@ -23,6 +23,8 @@ function displayWeather(response){
     let iconDisplay = document.querySelector("#icon");
     let icon = `<img class="weather-icon" src="${response.data.condition.icon_url}" alt="">`;
     iconDisplay.innerHTML = icon;
+
+    getForecast(response.data.city);
 }
 
 function formatDate(date){
@@ -67,21 +69,29 @@ function handleSearchSubmit(event){
 
 let searchForm= document.querySelector("#search-form");
 searchForm.addEventListener("submit",handleSearchSubmit);
-searchCity("Cape Town");
 
-function displayForecast(){
 
+function getForecast(city){
+    let apiKey = "67afdaf57o30ta1c59fb3ae425f8488b";
+    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+
+    axios.get(apiUrl).then(displayForecast);
+    console.log(apiUrl);
+}
+function displayForecast(response){
+
+    console.log(response);
     let forecast = document.querySelector("#forecast");
 
     let futureDays = ["Tues","Wed","Thurs","Fri","Sat"];
     let forecastHTML = "";
-    futureDays.forEach(function(futureDays){
+    for(let i = 0; i<futureDays.length; i++){
         forecastHTML = 
         forecastHTML +
 `
 <div class="row">
 <div class="col-2">
-    <div class="weather-forecast-date">${futureDays}</div>
+    <div class="weather-forecast-date">${futureDays[i]}</div>
             <img 
     src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png" 
     alt=""/>
@@ -97,10 +107,10 @@ function displayForecast(){
 </div>
 
 `;
-    });
+    }
     forecast.innerHTML = forecastHTML;
 
 }
 
-
+searchCity("Cape Town");
 displayForecast();
